@@ -1,0 +1,172 @@
+> v = [35,67,12,"asdf!"]
+[ 35, 67, 12, 'asdf!' ]
+> v[2]
+12
+> d = {nombre:"asdfasd", apellido:"asdfasdf"  }
+{ nombre: 'asdfasd', apellido: 'asdfasdf' }
+> d
+{ nombre: 'asdfasd', apellido: 'asdfasdf' }
+> d["nombre"]
+'asdfasd'
+> d["apellido"]
+'asdfasdf'
+> d["nombre"] = "Ana"
+'Ana'
+> d["apellido"] = "Gomez"
+'Gomez'
+> d
+{ nombre: 'Ana', apellido: 'Gomez' }
+> d.nombre
+'Ana'
+> d.apellido
+'Gomez'
+> v.1
+Thrown:
+v.1
+ ^^
+
+SyntaxError: Unexpected number
+> for(x of v) console.log(x)
+35
+67
+12
+asdf!
+undefined
+> for(x in v) console.log(x)
+0
+1
+2
+3
+undefined
+> for(x of d) console.log(x)
+Thrown:
+TypeError: d is not iterable
+> for(x in d) console.log(x)
+nombre
+apellido
+undefined
+> a = { codigo: 123, nombre: "Lapiz", precio:23}
+{ codigo: 123, nombre: 'Lapiz', precio: 23 }
+> a
+{ codigo: 123, nombre: 'Lapiz', precio: 23 }
+> b = { codigo: 317, nombre: "Goma", precio:15}
+{ codigo: 317, nombre: 'Goma', precio: 15 }
+> v = { numero:1, fecha:Date(), articulos: [a,b]}
+{ numero: 1,
+  fecha:
+   'Tue Jun 15 2021 19:18:06 GMT-0300 (Argentina Standard Time)',
+  articulos:
+   [ { codigo: 123, nombre: 'Lapiz', precio: 23 },
+     { codigo: 317, nombre: 'Goma', precio: 15 } ] }
+> typeof(v)
+'object'
+> typeof(v.numero)
+'number'
+> typeof(v.fecha)
+'string'
+> typeof(v.articulos)
+'object'
+> typeof(v.articulos[0])
+'object'
+> typeof(v.articulos[0].nombre)
+'string'
+> v.articulos[0].nombre
+'Lapiz'
+> v.articulos[1].nombre
+'Goma'
+> v.articulos[1].precio
+15
+> v.cliente = d
+{ nombre: 'Ana', apellido: 'Gomez' }
+> v
+{ numero: 1,
+  fecha:
+   'Tue Jun 15 2021 19:18:06 GMT-0300 (Argentina Standard Time)',
+  articulos:
+   [ { codigo: 123, nombre: 'Lapiz', precio: 23 },
+     { codigo: 317, nombre: 'Goma', precio: 15 } ],
+  cliente: { nombre: 'Ana', apellido: 'Gomez' } }
+> v.calcular_total = function() {
+... let suma = 0
+... for (art of this.articulos) { 
+..... suma += art.precio
+..... }
+... return suma
+... }
+[Function]
+> v
+{ numero: 1,
+  fecha:
+   'Tue Jun 15 2021 19:18:06 GMT-0300 (Argentina Standard Time)',
+  articulos:
+   [ { codigo: 123, nombre: 'Lapiz', precio: 23 },
+     { codigo: 317, nombre: 'Goma', precio: 15 } ],
+  cliente: { nombre: 'Ana', apellido: 'Gomez' },
+  calcular_total: [Function] }
+> typeof(v.calcular_total)
+'function'
+> v.calcular_total()
+38
+> v.articulos[0].cantidad = 4
+4
+> v.articulos[1].cantidad = 2
+2
+> v
+{ numero: 1,
+  fecha:
+   'Tue Jun 15 2021 19:18:06 GMT-0300 (Argentina Standard Time)',
+  articulos:
+   [ { codigo: 123, nombre: 'Lapiz', precio: 23, cantidad: 4 },
+     { codigo: 317, nombre: 'Goma', precio: 15, cantidad: 2 } ],
+  cliente: { nombre: 'Ana', apellido: 'Gomez' },
+  calcular_total: [Function] }
+> v.calcular_total = function() {
+... let suma = 0
+... for (art of this.articulos) { 
+..... suma += art.precio * art.cantidad
+..... }
+... return suma
+... }
+[Function]
+> v.calcular_total()
+122
+> v.fecha = new Date()
+2021-06-15T22:25:49.424Z
+> v
+{ numero: 1,
+  fecha: 2021-06-15T22:25:49.424Z,
+  articulos:
+   [ { codigo: 123, nombre: 'Lapiz', precio: 23, cantidad: 4 },
+     { codigo: 317, nombre: 'Goma', precio: 15, cantidad: 2 } ],
+  cliente: { nombre: 'Ana', apellido: 'Gomez' },
+  calcular_total: [Function] }
+> v.fecha.toString()
+'Tue Jun 15 2021 19:25:49 GMT-0300 (Argentina Standard Time)'
+> v.fecha
+2021-06-15T22:25:49.424Z
+> typeof(v.fecha)
+'object'
+> JSON.stringify(d)
+'{"nombre":"Ana","apellido":"Gomez"}'
+> d
+{ nombre: 'Ana', apellido: 'Gomez' }
+> JSON.stringify(v)
+'{"numero":1,"fecha":"2021-06-15T22:25:49.424Z","articulos":[{"codigo":123,"nombre":"Lapiz","precio":23,"cantidad":4},{"codigo":317,"nombre":"Goma","precio":15,"cantidad":2}],"cliente":{"nombre":"Ana","apellido":"Gomez"}}'                            
+> let e = JSON.parse('{"x":3.4,"y":4.5}')
+undefined
+> e
+{ x: 3.4, y: 4.5 }
+> e.distancia = function() {}
+[Function]
+> 
+> Math.sqrt(23)
+4.795831523312719
+> e.y
+4.5
+> e.x
+3.4
+> e.distancia = function() {return Math.sqrt(this.x**2+this.y**2)}
+[Function]
+> e.distancia()
+5.640035460881429
+> 
