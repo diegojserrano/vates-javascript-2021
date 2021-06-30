@@ -1,0 +1,9 @@
+Hacer un programa javascript que solicite al usuario el ingreso de un conjunto de n artículos, con n ingresado por el usuario
+De cada artículo se debe ingresar nombre, precio, stock y tipo. El tipo es un número entre 1 y 10.
+Finalizada la carga el programa debe mostrar:
+- Listado de artículos
+- Todos los datos del artículo más caro
+- Promedio de precios
+- Valor total del stock (sumatoria del producto de stock y precio)
+- Cantidad de artículos por cada tipo
+
